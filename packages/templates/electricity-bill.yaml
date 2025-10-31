@@ -1,0 +1,32 @@
+id: electricity-bill
+version: 1.0.0
+issuers:
+  - BSES
+  - TPDDL
+  - MSEB
+  - BESCOM
+fields:
+  consumerNumber:
+    patterns:
+      - "Consumer\s*No\.?\s*:?\s*(?P<value>[A-Z0-9/-]+)"
+  billAmount:
+    patterns:
+      - "Amount\s*Due\s*:?\s*₹?\s*(?P<value>[0-9,]+(?:\.[0-9]{2})?)"
+      - "Total\s*Amount\s*:?\s*₹?\s*(?P<value>[0-9,]+(?:\.[0-9]{2})?)"
+  dueDate:
+    patterns:
+      - "Due\s*Date\s*:?\s*(?P<value>\d{1,2}\s*[A-Za-z]{3,9}\s*\d{4}|\d{4}-\d{2}-\d{2})"
+  unitsConsumed:
+    patterns:
+      - "Units\s*:?\s*(?P<value>[0-9,]+)"
+      - "Consumption\s*:?\s*(?P<value>[0-9,]+)\s*kWh"
+  billPeriod:
+    patterns:
+      - "Period\s*:?\s*(?P<value>\d{1,2}\s*[A-Za-z]{3,9}\s*\d{4}\s*to\s*\d{1,2}\s*[A-Za-z]{3,9}\s*\d{4})"
+post_rules:
+  - ensure_amount_numeric: [billAmount]
+red_flags:
+  - late_fee_charged: "Late fee or penalty mentioned"
+samples:
+  - "Consumer No: BRPL123456\nAmount Due: ₹2,500.00\nDue Date: 20 Nov 2025\nUnits: 450 kWh\nPeriod: 01 Oct 2025 to 31 Oct 2025"
+

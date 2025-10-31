@@ -1,0 +1,30 @@
+id: insurance-claim
+version: 1.0.0
+issuers:
+  - LIC
+  - HDFC Life
+  - ICICI Prudential
+  - SBI Life
+fields:
+  claimNumber:
+    patterns:
+      - "Claim\s*No\.?\s*:?\s*(?P<value>[A-Z0-9/-]+)"
+  claimAmount:
+    patterns:
+      - "Claim\s*Amount\s*:?\s*₹?\s*(?P<value>[0-9,]+)"
+  status:
+    patterns:
+      - "Status\s*:?\s*(?P<value>(?:Pending|Approved|Rejected|Under\s*Review))"
+  submittedDate:
+    patterns:
+      - "Submitted\s*:?\s*(?P<value>\d{1,2}\s*[A-Za-z]{3,9}\s*\d{4}|\d{4}-\d{2}-\d{2})"
+  requiredDocuments:
+    patterns:
+      - "Required\s*Documents?\s*:?\s*(?P<value>.+)"
+post_rules:
+  - ensure_amount_numeric: [claimAmount]
+red_flags:
+  - claim_pending_long: "Claim pending > 30 days"
+samples:
+  - "Claim No: CLM789012\nClaim Amount: ₹50,000\nStatus: Pending\nSubmitted: 01 Oct 2025\nRequired Documents: Medical certificate, Bills"
+

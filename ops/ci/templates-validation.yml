@@ -1,0 +1,42 @@
+name: Templates Validation
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'packages/templates/**'
+      - 'ops/ci/templates-validation.yml'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'packages/templates/**'
+      - 'ops/ci/templates-validation.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        cd packages/templates
+        pip install pyyaml
+    
+    - name: Compile and validate templates
+      run: |
+        cd packages/templates
+        python3 compiler.py
+    
+    - name: Check compiled output
+      run: |
+        cd packages/templates
+        test -f compiled/index.json || exit 1
+        test $(ls compiled/*.json | wc -l) -gt 1 || exit 1
+

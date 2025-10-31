@@ -1,0 +1,35 @@
+id: rent-agreement
+version: 1.0.0
+issuers:
+  - Generic
+fields:
+  landlordName:
+    patterns:
+      - "Landlord\s*:?\s*(?P<value>[A-Z][A-Za-z\s]+)"
+      - "Lessor\s*:?\s*(?P<value>[A-Z][A-Za-z\s]+)"
+  tenantName:
+    patterns:
+      - "Tenant\s*:?\s*(?P<value>[A-Z][A-Za-z\s]+)"
+      - "Lessee\s*:?\s*(?P<value>[A-Z][A-Za-z\s]+)"
+  monthlyRent:
+    patterns:
+      - "Rent\s*:?\s*₹?\s*(?P<value>[0-9,]+)"
+      - "Monthly\s*Rent\s*:?\s*₹?\s*(?P<value>[0-9,]+)"
+  securityDeposit:
+    patterns:
+      - "Security\s*Deposit\s*:?\s*₹?\s*(?P<value>[0-9,]+)"
+      - "Deposit\s*:?\s*₹?\s*(?P<value>[0-9,]+)"
+  duration:
+    patterns:
+      - "Duration\s*:?\s*(?P<value>\d+\s*(?:month|year)s?)"
+      - "Tenure\s*:?\s*(?P<value>\d+\s*(?:month|year)s?)"
+  startDate:
+    patterns:
+      - "Start\s*Date\s*:?\s*(?P<value>\d{1,2}\s*[A-Za-z]{3,9}\s*\d{4}|\d{4}-\d{2}-\d{2})"
+post_rules:
+  - ensure_amount_numeric: [monthlyRent, securityDeposit]
+red_flags:
+  - security_deposit_high: "Security deposit > 3x monthly rent"
+samples:
+  - "Landlord: Rajesh Kumar\nTenant: Priya Sharma\nMonthly Rent: ₹15,000\nSecurity Deposit: ₹45,000\nDuration: 11 months\nStart Date: 01 Nov 2025"
+

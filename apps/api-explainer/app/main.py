@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from .config import settings
-from .routers import health, explain
+from .routers import health, explain, templates
 from .middleware import request_id_middleware
 
 
@@ -17,6 +17,7 @@ app.add_middleware(
 
 app.include_router(health.router)
 app.include_router(explain.router)
+app.include_router(templates.router)
 
 @app.middleware("http")
 async def _request_id(request, call_next):

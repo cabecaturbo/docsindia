@@ -1,0 +1,28 @@
+id: tax-document
+version: 1.0.0
+issuers:
+  - Income Tax Department
+fields:
+  panNumber:
+    patterns:
+      - "PAN\s*:?\s*(?P<value>[A-Z]{5}[0-9]{4}[A-Z])"
+  assessmentYear:
+    patterns:
+      - "Assessment\s*Year\s*:?\s*(?P<value>\d{4}-\d{2})"
+  totalIncome:
+    patterns:
+      - "Total\s*Income\s*:?\s*₹?\s*(?P<value>[0-9,]+)"
+  taxPaid:
+    patterns:
+      - "Tax\s*Paid\s*:?\s*₹?\s*(?P<value>[0-9,]+)"
+  refundAmount:
+    patterns:
+      - "Refund\s*:?\s*₹?\s*(?P<value>[0-9,]+)"
+  status:
+    patterns:
+      - "Status\s*:?\s*(?P<value>(?:Processed|Pending|Refunded))"
+post_rules:
+  - ensure_amount_numeric: [totalIncome, taxPaid, refundAmount]
+samples:
+  - "PAN: ABCDE1234F\nAssessment Year: 2024-25\nTotal Income: ₹8,50,000\nTax Paid: ₹45,000\nRefund: ₹5,000\nStatus: Processed"
+
