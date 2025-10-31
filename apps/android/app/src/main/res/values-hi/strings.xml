@@ -1,5 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">सिम्पलडॉक</string>
-    <!-- TODO: Add Hindi translations --></resources>
-
+    
+    <!-- Document Upload -->
+    <string name="upload_document">दस्तावेज़ अपलोड करें</string>
+    <string name="camera_capture">कैमरा से कैप्चर करें</string>
+    <string name="import_pdf">PDF आयात करें</string>
+    <string name="processing_document">दस्तावेज़ प्रसंस्करण…</string>
+    
+    <!-- Explanation -->
+    <string name="document_summary">सारांश</string>
+    <string name="key_fields">मुख्य फ़ील्ड</string>
+    <string name="actions">आगे क्या करें</string>
+    <string name="confidence">विश्वास: %1$s%%</string>
+    
+    <!-- Actions -->
+    <string name="set_reminder">भुगतान अनुस्मारक सेट करें</string>
+    <string name="share_to_whatsapp">WhatsApp पर साझा करें</string>
+    <string name="export_pdf">PDF के रूप में निर्यात करें</string>
+    
+    <!-- Billing -->
+    <string name="free_tier">मुफ्त</string>
+    <string name="premium_tier">प्रीमियम</string>
+    <string name="upgrade_to_premium">प्रीमियम में अपग्रेड करें</string>
+    <string name="subscription_monthly">₹149/महीना</string>
+    <string name="subscription_yearly">₹999/वर्ष</string>
+    <string name="referral_code">रेफ़रल कोड</string>
+    <string name="enter_referral_code">रेफ़रल कोड दर्ज करें</string>
+    
+    <!-- Errors -->
+    <string name="error_ocr_failed">दस्तावेज़ से पाठ निकालने में विफल</string>
+    <string name="error_network">नेटवर्क त्रुटि। कृपया अपना कनेक्शन जांचें।</string>
+    <string name="error_unsupported_doc">यह दस्तावेज़ प्रकार अभी तक समर्थित नहीं है।</string>
+    
+    <!-- Reminders -->
+    <string name="reminder_scheduled">अनुस्मारक शेड्यूल किया गया</string>
+    <string name="reminder_cancelled">अनुस्मारक रद्द किया गया</string>
+    
+    <!-- Watermark -->
+    <string name="watermark_for_learning">केवल सीखने के उद्देश्य से</string>
+</resources>

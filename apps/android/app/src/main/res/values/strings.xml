@@ -1,5 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">SimpleDoc</string>
-    <!-- TODO: Add more strings for document upload, explanation, share, etc. --></resources>
-
+    
+    <!-- Document Upload -->
+    <string name="upload_document">Upload Document</string>
+    <string name="camera_capture">Capture with Camera</string>
+    <string name="import_pdf">Import PDF</string>
+    <string name="processing_document">Processing document…</string>
+    
+    <!-- Explanation -->
+    <string name="document_summary">Summary</string>
+    <string name="key_fields">Key Fields</string>
+    <string name="actions">What to Do Next</string>
+    <string name="confidence">Confidence: %1$s%%</string>
+    
+    <!-- Actions -->
+    <string name="set_reminder">Set Payment Reminder</string>
+    <string name="share_to_whatsapp">Share to WhatsApp</string>
+    <string name="export_pdf">Export as PDF</string>
+    
+    <!-- Billing -->
+    <string name="free_tier">Free</string>
+    <string name="premium_tier">Premium</string>
+    <string name="upgrade_to_premium">Upgrade to Premium</string>
+    <string name="subscription_monthly">₹149/month</string>
+    <string name="subscription_yearly">₹999/year</string>
+    <string name="referral_code">Referral Code</string>
+    <string name="enter_referral_code">Enter referral code</string>
+    
+    <!-- Errors -->
+    <string name="error_ocr_failed">Failed to extract text from document</string>
+    <string name="error_network">Network error. Please check your connection.</string>
+    <string name="error_unsupported_doc">This document type is not supported yet.</string>
+    
+    <!-- Reminders -->
+    <string name="reminder_scheduled">Reminder scheduled</string>
+    <string name="reminder_cancelled">Reminder cancelled</string>
+    
+    <!-- Watermark -->
+    <string name="watermark_for_learning">For learning purposes only</string>
+</resources>

@@ -22,7 +22,7 @@ android {
 }
 
 dependencies {
-    // TODO: Add ML Kit Text Recognition dependencies
-    // implementation("com.google.mlkit:text-recognition:2.1.0")
+    implementation("com.google.mlkit:text-recognition:2.1.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.3")
 }
 

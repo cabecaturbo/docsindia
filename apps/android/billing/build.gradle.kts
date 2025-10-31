@@ -22,7 +22,7 @@ android {
 }
 
 dependencies {
-    // TODO: Add Play Billing Library v6
-    // implementation("com.android.billingclient:billing-ktx:6.1.0")
+    implementation("com.android.billingclient:billing-ktx:6.1.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 }
 
