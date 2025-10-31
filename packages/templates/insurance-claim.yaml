@@ -8,19 +8,19 @@ issuers:
 fields:
   claimNumber:
     patterns:
-      - "Claim\s*No\.?\s*:?\s*(?P<value>[A-Z0-9/-]+)"
+      - 'Claim\\s*No\\.?\\s*:?\\s*(?P<value>[A-Z0-9/-]+)'
   claimAmount:
     patterns:
-      - "Claim\s*Amount\s*:?\s*₹?\s*(?P<value>[0-9,]+)"
+      - 'Claim\\s*Amount\\s*:?\\s*₹?\\s*(?P<value>[0-9,]+)'
   status:
     patterns:
-      - "Status\s*:?\s*(?P<value>(?:Pending|Approved|Rejected|Under\s*Review))"
+      - 'Status\\s*:?\\s*(?P<value>(?:Pending|Approved|Rejected|Under\\s*Review))'
   submittedDate:
     patterns:
-      - "Submitted\s*:?\s*(?P<value>\d{1,2}\s*[A-Za-z]{3,9}\s*\d{4}|\d{4}-\d{2}-\d{2})"
+      - 'Submitted\\s*:?\\s*(?P<value>\\d{1,2}\\s*[A-Za-z]{3,9}\\s*\\d{4}|\\d{4}-\\d{2}-\\d{2})'
   requiredDocuments:
     patterns:
-      - "Required\s*Documents?\s*:?\s*(?P<value>.+)"
+      - 'Required\\s*Documents?\\s*:?\\s*(?P<value>.+)'
 post_rules:
   - ensure_amount_numeric: [claimAmount]
 red_flags:

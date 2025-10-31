@@ -7,13 +7,13 @@ issuers:
 fields:
   accountNumber:
     patterns:
-      - "Account\s*No\.?\s*:?\s*(?P<value>[Xx*\- ]{0,6}\d{4,})"
+      - 'Account\\\s*No\\\.?\\\s*:?\\\s*(?P<value>[Xx*\\\- ]{0,6}\\\d{4,})'
   closingBalance:
     patterns:
-      - "Closing\s*Balance\s*:?\s*₹?\s*(?P<value>[0-9,]+(?:\.\d{1,2})?)"
+      - 'Closing\\\s*Balance\\\s*:?\\\s*₹?\\\s*(?P<value>[0-9,]+(?:\\\.\\\d{1,2})?)'
   period:
     patterns:
-      - "Period\s*:?\s*(?P<value>\d{1,2}\s*[A-Za-z]{3,9}\s*\d{4}\s*to\s*\d{1,2}\s*[A-Za-z]{3,9}\s*\d{4})"
+      - 'Period\\\s*:?\\\s*(?P<value>\\\d{1,2}\\\s*[A-Za-z]{3,9}\\\s*\\\d{4}\\\s*to\\\s*\\\d{1,2}\\\s*[A-Za-z]{3,9}\\\s*\\\d{4})'
 post_rules:
   - ensure_amount_numeric: [closingBalance]
 samples:

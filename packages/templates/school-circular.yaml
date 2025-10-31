@@ -5,23 +5,23 @@ issuers:
 fields:
   schoolName:
     patterns:
-      - "School\s*:?\s*(?P<value>[A-Z][A-Za-z\s]+)"
+      - 'School\\s*:?\\s*(?P<value>[A-Z][A-Za-z\\s]+)'
   circularDate:
     patterns:
-      - "Date\s*:?\s*(?P<value>\d{1,2}\s*[A-Za-z]{3,9}\s*\d{4}|\d{4}-\d{2}-\d{2})"
+      - 'Date\\s*:?\\s*(?P<value>\\d{1,2}\\s*[A-Za-z]{3,9}\\s*\\d{4}|\\d{4}-\\d{2}-\\d{2})'
   circularNumber:
     patterns:
-      - "Circular\s*No\.?\s*:?\s*(?P<value>[A-Z0-9/-]+)"
+      - 'Circular\\s*No\\.?\\s*:?\\s*(?P<value>[A-Z0-9/-]+)'
   subject:
     patterns:
-      - "Subject\s*:?\s*(?P<value>.+)"
+      - 'Subject\\s*:?\\s*(?P<value>.+)'
   importantDate:
     patterns:
-      - "Important\s*Date\s*:?\s*(?P<value>\d{1,2}\s*[A-Za-z]{3,9}\s*\d{4})"
-      - "Due\s*Date\s*:?\s*(?P<value>\d{1,2}\s*[A-Za-z]{3,9}\s*\d{4})"
+      - 'Important\\s*Date\\s*:?\\s*(?P<value>\\d{1,2}\\s*[A-Za-z]{3,9}\\s*\\d{4})'
+      - 'Due\\s*Date\\s*:?\\s*(?P<value>\\d{1,2}\\s*[A-Za-z]{3,9}\\s*\\d{4})'
   actionRequired:
     patterns:
-      - "Action\s*Required\s*:?\s*(?P<value>.+)"
+      - 'Action\\s*Required\\s*:?\\s*(?P<value>.+)'
 samples:
   - "School: Delhi Public School\nDate: 15 Nov 2025\nCircular No: CIRC/2025/123\nSubject: Annual Day Registration\nImportant Date: 30 Nov 2025\nAction Required: Submit registration form"
 

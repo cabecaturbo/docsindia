@@ -1,0 +1,56 @@
+{
+  "id": "salary-slip",
+  "version": "1.0.0",
+  "issuers": [
+    "Generic"
+  ],
+  "fields": {
+    "employeeName": {
+      "patterns": [
+        "Employee\\\\s*Name\\\\s*:?\\\\s*(?P<value>[A-Z][A-Za-z\\\\s]+)"
+      ],
+      "group_name": "value"
+    },
+    "employeeId": {
+      "patterns": [
+        "Employee\\\\s*ID\\\\s*:?\\\\s*(?P<value>[A-Z0-9/-]+)"
+      ],
+      "group_name": "value"
+    },
+    "payPeriod": {
+      "patterns": [
+        "Period\\\\s*:?\\\\s*(?P<value>\\\\d{1,2}\\\\s*[A-Za-z]{3,9}\\\\s*\\\\d{4}\\\\s*to\\\\s*\\\\d{1,2}\\\\s*[A-Za-z]{3,9}\\\\s*\\\\d{4})"
+      ],
+      "group_name": "value"
+    },
+    "grossSalary": {
+      "patterns": [
+        "Gross\\\\s*Salary\\\\s*:?\\\\s*₹?\\\\s*(?P<value>[0-9,]+)"
+      ],
+      "group_name": "value"
+    },
+    "netSalary": {
+      "patterns": [
+        "Net\\\\s*Salary\\\\s*:?\\\\s*₹?\\\\s*(?P<value>[0-9,]+)",
+        "In\\\\s*Hand\\\\s*:?\\\\s*₹?\\\\s*(?P<value>[0-9,]+)"
+      ],
+      "group_name": "value"
+    },
+    "deductions": {
+      "patterns": [
+        "Deductions\\\\s*:?\\\\s*₹?\\\\s*(?P<value>[0-9,]+)"
+      ],
+      "group_name": "value"
+    }
+  },
+  "post_rules": [
+    {
+      "ensure_amount_numeric": [
+        "grossSalary",
+        "netSalary",
+        "deductions"
+      ]
+    }
+  ],
+  "red_flags": []
+}

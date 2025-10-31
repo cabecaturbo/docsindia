@@ -1,0 +1,48 @@
+{
+  "id": "school-circular",
+  "version": "1.0.0",
+  "issuers": [
+    "Generic"
+  ],
+  "fields": {
+    "schoolName": {
+      "patterns": [
+        "School\\\\s*:?\\\\s*(?P<value>[A-Z][A-Za-z\\\\s]+)"
+      ],
+      "group_name": "value"
+    },
+    "circularDate": {
+      "patterns": [
+        "Date\\\\s*:?\\\\s*(?P<value>\\\\d{1,2}\\\\s*[A-Za-z]{3,9}\\\\s*\\\\d{4}|\\\\d{4}-\\\\d{2}-\\\\d{2})"
+      ],
+      "group_name": "value"
+    },
+    "circularNumber": {
+      "patterns": [
+        "Circular\\\\s*No\\\\.?\\\\s*:?\\\\s*(?P<value>[A-Z0-9/-]+)"
+      ],
+      "group_name": "value"
+    },
+    "subject": {
+      "patterns": [
+        "Subject\\\\s*:?\\\\s*(?P<value>.+)"
+      ],
+      "group_name": "value"
+    },
+    "importantDate": {
+      "patterns": [
+        "Important\\\\s*Date\\\\s*:?\\\\s*(?P<value>\\\\d{1,2}\\\\s*[A-Za-z]{3,9}\\\\s*\\\\d{4})",
+        "Due\\\\s*Date\\\\s*:?\\\\s*(?P<value>\\\\d{1,2}\\\\s*[A-Za-z]{3,9}\\\\s*\\\\d{4})"
+      ],
+      "group_name": "value"
+    },
+    "actionRequired": {
+      "patterns": [
+        "Action\\\\s*Required\\\\s*:?\\\\s*(?P<value>.+)"
+      ],
+      "group_name": "value"
+    }
+  },
+  "post_rules": [],
+  "red_flags": []
+}

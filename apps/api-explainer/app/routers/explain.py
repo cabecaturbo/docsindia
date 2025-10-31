@@ -3,9 +3,13 @@ from pydantic import BaseModel
 from typing import Any
 from fastapi import HTTPException
 from ..cache import cache_get, cache_set, content_hash, rate_limit_allow
+from ..extractors import DocumentClassifier, TemplateExtractor, SummaryGenerator, ActionGenerator
 
 
 router = APIRouter()
+
+# Initialize extractors
+_extractor = TemplateExtractor()
 
 
 class DocMeta(BaseModel):
@@ -25,34 +29,41 @@ class ExplainRequest(BaseModel):
 def explain(req: ExplainRequest) -> dict[str, Any]:
     if not rate_limit_allow(req.deviceId):
         raise HTTPException(status_code=429, detail="Too many requests")
+    
     text = req.docText.strip()
+    if not text:
+        raise HTTPException(status_code=400, detail="Document text is required")
+    
+    # Check cache
     key = f"explain:{content_hash(text)}"
     cached = cache_get(key)
     if cached:
         return cached
-    # naive heuristic classifier
-    doc_type = req.docMeta.typeHint or ("credit-card-statement" if "statement" in text.lower() else "generic")
-
-    # dummy extraction
-    extractions: dict[str, Any] = {}
-    if doc_type == "credit-card-statement":
-        extractions = {
-            "issuer": "Unknown",
-            "totalDue": None,
-            "dueDate": None,
-            "fees": []
-        }
-
-    summary = "Summary unavailable" if not text else "Basic summary generated"
-
+    
+    # Classify document type
+    doc_type = DocumentClassifier.classify(text, req.docMeta.typeHint)
+    
+    # Extract fields using templates
+    extraction_result = _extractor.extract(text, doc_type)
+    extractions = extraction_result["extractions"]
+    citations = extraction_result["citations"]
+    confidence = extraction_result["confidence"]
+    
+    # Generate summary
+    summary = SummaryGenerator.generate(extractions, doc_type, req.locale)
+    
+    # Generate actions
+    actions = ActionGenerator.generate(extractions, doc_type)
+    
     resp = {
         "summary": summary,
         "extractions": extractions,
-        "actions": [],
-        "confidence": 0.5,
+        "actions": actions,
+        "confidence": confidence,
         "docType": doc_type,
-        "citations": []
+        "citations": citations
     }
+    
     cache_set(key, resp)
     return resp
 

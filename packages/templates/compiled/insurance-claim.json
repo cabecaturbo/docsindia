@@ -1,0 +1,54 @@
+{
+  "id": "insurance-claim",
+  "version": "1.0.0",
+  "issuers": [
+    "LIC",
+    "HDFC Life",
+    "ICICI Prudential",
+    "SBI Life"
+  ],
+  "fields": {
+    "claimNumber": {
+      "patterns": [
+        "Claim\\\\s*No\\\\.?\\\\s*:?\\\\s*(?P<value>[A-Z0-9/-]+)"
+      ],
+      "group_name": "value"
+    },
+    "claimAmount": {
+      "patterns": [
+        "Claim\\\\s*Amount\\\\s*:?\\\\s*₹?\\\\s*(?P<value>[0-9,]+)"
+      ],
+      "group_name": "value"
+    },
+    "status": {
+      "patterns": [
+        "Status\\\\s*:?\\\\s*(?P<value>(?:Pending|Approved|Rejected|Under\\\\s*Review))"
+      ],
+      "group_name": "value"
+    },
+    "submittedDate": {
+      "patterns": [
+        "Submitted\\\\s*:?\\\\s*(?P<value>\\\\d{1,2}\\\\s*[A-Za-z]{3,9}\\\\s*\\\\d{4}|\\\\d{4}-\\\\d{2}-\\\\d{2})"
+      ],
+      "group_name": "value"
+    },
+    "requiredDocuments": {
+      "patterns": [
+        "Required\\\\s*Documents?\\\\s*:?\\\\s*(?P<value>.+)"
+      ],
+      "group_name": "value"
+    }
+  },
+  "post_rules": [
+    {
+      "ensure_amount_numeric": [
+        "claimAmount"
+      ]
+    }
+  ],
+  "red_flags": [
+    {
+      "claim_pending_long": "Claim pending > 30 days"
+    }
+  ]
+}

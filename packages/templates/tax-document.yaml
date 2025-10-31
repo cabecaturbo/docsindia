@@ -5,22 +5,22 @@ issuers:
 fields:
   panNumber:
     patterns:
-      - "PAN\s*:?\s*(?P<value>[A-Z]{5}[0-9]{4}[A-Z])"
+      - 'PAN\\s*:?\\s*(?P<value>[A-Z]{5}[0-9]{4}[A-Z])'
   assessmentYear:
     patterns:
-      - "Assessment\s*Year\s*:?\s*(?P<value>\d{4}-\d{2})"
+      - 'Assessment\\s*Year\\s*:?\\s*(?P<value>\\d{4}-\\d{2})'
   totalIncome:
     patterns:
-      - "Total\s*Income\s*:?\s*₹?\s*(?P<value>[0-9,]+)"
+      - 'Total\\s*Income\\s*:?\\s*₹?\\s*(?P<value>[0-9,]+)'
   taxPaid:
     patterns:
-      - "Tax\s*Paid\s*:?\s*₹?\s*(?P<value>[0-9,]+)"
+      - 'Tax\\s*Paid\\s*:?\\s*₹?\\s*(?P<value>[0-9,]+)'
   refundAmount:
     patterns:
-      - "Refund\s*:?\s*₹?\s*(?P<value>[0-9,]+)"
+      - 'Refund\\s*:?\\s*₹?\\s*(?P<value>[0-9,]+)'
   status:
     patterns:
-      - "Status\s*:?\s*(?P<value>(?:Processed|Pending|Refunded))"
+      - 'Status\\s*:?\\s*(?P<value>(?:Processed|Pending|Refunded))'
 post_rules:
   - ensure_amount_numeric: [totalIncome, taxPaid, refundAmount]
 samples:

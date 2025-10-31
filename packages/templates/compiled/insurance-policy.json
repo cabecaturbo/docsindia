@@ -1,0 +1,60 @@
+{
+  "id": "insurance-policy",
+  "version": "1.0.0",
+  "issuers": [
+    "LIC",
+    "HDFC Life",
+    "ICICI Prudential",
+    "SBI Life"
+  ],
+  "fields": {
+    "policyNumber": {
+      "patterns": [
+        "Policy\\\\s*No\\\\.?\\\\s*:?\\\\s*(?P<value>[A-Z0-9/-]+)",
+        "Policy\\\\s*Number\\\\s*:?\\\\s*(?P<value>[A-Z0-9/-]+)"
+      ],
+      "group_name": "value"
+    },
+    "insurerName": {
+      "patterns": [
+        "Insurer\\\\s*:?\\\\s*(?P<value>[A-Z][A-Za-z\\\\s]+)"
+      ],
+      "group_name": "value"
+    },
+    "premiumAmount": {
+      "patterns": [
+        "Premium\\\\s*:?\\\\s*₹?\\\\s*(?P<value>[0-9,]+)",
+        "Annual\\\\s*Premium\\\\s*:?\\\\s*₹?\\\\s*(?P<value>[0-9,]+)"
+      ],
+      "group_name": "value"
+    },
+    "premiumDueDate": {
+      "patterns": [
+        "Due\\\\s*Date\\\\s*:?\\\\s*(?P<value>\\\\d{1,2}\\\\s*[A-Za-z]{3,9}\\\\s*\\\\d{4}|\\\\d{4}-\\\\d{2}-\\\\d{2})"
+      ],
+      "group_name": "value"
+    },
+    "sumAssured": {
+      "patterns": [
+        "Sum\\\\s*Assured\\\\s*:?\\\\s*₹?\\\\s*(?P<value>[0-9,]+)",
+        "Coverage\\\\s*:?\\\\s*₹?\\\\s*(?P<value>[0-9,]+)"
+      ],
+      "group_name": "value"
+    },
+    "policyType": {
+      "patterns": [
+        "Type\\\\s*:?\\\\s*(?P<value>[A-Z][A-Za-z\\\\s]+)"
+      ],
+      "group_name": "value"
+    }
+  },
+  "post_rules": [
+    {
+      "ensure_amount_numeric": [
+        "premiumAmount",
+        "sumAssured"
+      ]
+    }
+  ],
+  "red_flags": []
+}

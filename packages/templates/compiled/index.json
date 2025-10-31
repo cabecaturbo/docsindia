@@ -1,0 +1,97 @@
+{
+  "docTypes": [
+    {
+      "id": "bank-statement",
+      "version": "1.0.0",
+      "issuers": [
+        "HDFC",
+        "ICICI",
+        "SBI"
+      ]
+    },
+    {
+      "id": "credit-card-statement",
+      "version": "1.0.0",
+      "issuers": [
+        "HDFC",
+        "ICICI",
+        "SBI"
+      ]
+    },
+    {
+      "id": "electricity-bill",
+      "version": "1.0.0",
+      "issuers": [
+        "BSES",
+        "TPDDL",
+        "MSEB",
+        "BESCOM"
+      ]
+    },
+    {
+      "id": "hospital-bill",
+      "version": "1.0.0",
+      "issuers": [
+        "Generic"
+      ]
+    },
+    {
+      "id": "insurance-claim",
+      "version": "1.0.0",
+      "issuers": [
+        "LIC",
+        "HDFC Life",
+        "ICICI Prudential",
+        "SBI Life"
+      ]
+    },
+    {
+      "id": "insurance-policy",
+      "version": "1.0.0",
+      "issuers": [
+        "LIC",
+        "HDFC Life",
+        "ICICI Prudential",
+        "SBI Life"
+      ]
+    },
+    {
+      "id": "phone-bill",
+      "version": "1.0.0",
+      "issuers": [
+        "Airtel",
+        "Jio",
+        "Vi",
+        "BSNL"
+      ]
+    },
+    {
+      "id": "rent-agreement",
+      "version": "1.0.0",
+      "issuers": [
+        "Generic"
+      ]
+    },
+    {
+      "id": "salary-slip",
+      "version": "1.0.0",
+      "issuers": [
+        "Generic"
+      ]
+    },
+    {
+      "id": "school-circular",
+      "version": "1.0.0",
+      "issuers": [
+        "Generic"
+      ]
+    },
+    {
+      "id": "tax-document",
+      "version": "1.0.0",
+      "issuers": [
+        "Income Tax Department"
+      ]
+    }
+  ]
+}
