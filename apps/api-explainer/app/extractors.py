@@ -104,7 +104,17 @@ class TemplateExtractor:
             
             for pattern_str in patterns:
                 try:
-                    pattern = re.compile(pattern_str)
+                    # Normalize excessive backslash escaping from JSON/YAML
+                    # JSON stores patterns with double-escaped backslashes
+                    # We need to reduce them: \\\\ becomes \, \\\\s becomes \s, etc.
+                    # Do this iteratively until no more reduction is possible
+                    normalized_pattern = pattern_str
+                    prev_pattern = ""
+                    while normalized_pattern != prev_pattern:
+                        prev_pattern = normalized_pattern
+                        normalized_pattern = normalized_pattern.replace("\\\\", "\\")
+                    
+                    pattern = re.compile(normalized_pattern)
                     match = pattern.search(text)
                     
                     if match:
