@@ -1,0 +1,22 @@
+id: credit-card-statement
+version: 1.0.0
+issuers:
+  - HDFC
+  - ICICI
+  - SBI
+fields:
+  issuer:
+    patterns:
+      - "(?:Issuer|Bank|Card issuer)\s*:\s*(?P<value>[A-Z]{2,}[A-Za-z ]*)"
+  totalDue:
+    patterns:
+      - "Total\s*Due\s*:?\s*₹?\s*(?P<value>[0-9,]+(?:\.\d{1,2})?)"
+  dueDate:
+    patterns:
+      - "Due\s*Date\s*:?\s*(?P<value>\d{1,2}\s*[A-Za-z]{3,9}\s*\d{2,4}|\d{4}-\d{2}-\d{2})"
+post_rules:
+  - ensure_amount_numeric: [totalDue]
+samples:
+  - "Total Due: ₹4,250\nDue Date: 15 Nov 2025\nIssuer: HDFC"
+
+

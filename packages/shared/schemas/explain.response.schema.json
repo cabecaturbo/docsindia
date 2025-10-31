@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://simpledoc.app/schemas/explain.response.schema.json",
+  "title": "ExplainResponse",
+  "type": "object",
+  "required": [
+    "summary",
+    "extractions",
+    "actions",
+    "confidence",
+    "docType",
+    "citations"
+  ],
+  "properties": {
+    "summary": { "type": "string" },
+    "extractions": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "actions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["label", "type", "payload"],
+        "properties": {
+          "label": { "type": "string" },
+          "type": { "type": "string" },
+          "payload": { "type": "object" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+    "docType": { "type": "string" },
+    "citations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["field", "source"],
+        "properties": {
+          "field": { "type": "string" },
+          "source": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
+
+

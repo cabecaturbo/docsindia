@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://simpledoc.app/schemas/explain.request.schema.json",
+  "title": "ExplainRequest",
+  "type": "object",
+  "required": ["docText", "docMeta", "locale", "deviceId"],
+  "properties": {
+    "docText": { "type": "string", "minLength": 1 },
+    "docMeta": {
+      "type": "object",
+      "properties": {
+        "typeHint": { "type": "string" },
+        "pages": { "type": "integer", "minimum": 1 }
+      },
+      "additionalProperties": true
+    },
+    "locale": { "type": "string", "pattern": "^[a-z]{2}-[A-Z]{2}$" },
+    "hints": { "type": "boolean" },
+    "deviceId": { "type": "string", "minLength": 3 }
+  },
+  "additionalProperties": false
+}
+
+

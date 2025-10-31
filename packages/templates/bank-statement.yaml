@@ -1,0 +1,22 @@
+id: bank-statement
+version: 1.0.0
+issuers:
+  - HDFC
+  - ICICI
+  - SBI
+fields:
+  accountNumber:
+    patterns:
+      - "Account\s*No\.?\s*:?\s*(?P<value>[Xx*\- ]{0,6}\d{4,})"
+  closingBalance:
+    patterns:
+      - "Closing\s*Balance\s*:?\s*₹?\s*(?P<value>[0-9,]+(?:\.\d{1,2})?)"
+  period:
+    patterns:
+      - "Period\s*:?\s*(?P<value>\d{1,2}\s*[A-Za-z]{3,9}\s*\d{4}\s*to\s*\d{1,2}\s*[A-Za-z]{3,9}\s*\d{4})"
+post_rules:
+  - ensure_amount_numeric: [closingBalance]
+samples:
+  - "Account No: XXXX1234\nClosing Balance: ₹12,345.67\nPeriod: 01 Oct 2025 to 31 Oct 2025"
+
+

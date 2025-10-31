@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://simpledoc.app/schemas/health.response.schema.json",
+  "title": "HealthResponse",
+  "type": "object",
+  "required": ["status"],
+  "properties": {
+    "status": { "type": "string", "enum": ["ok"] }
+  },
+  "additionalProperties": false
+}
+
+

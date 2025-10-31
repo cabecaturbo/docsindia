@@ -1,0 +1,20 @@
+{
+  "ERR_VALIDATION": {
+    "httpStatus": 400,
+    "message": "Request validation failed"
+  },
+  "ERR_RATE_LIMIT": {
+    "httpStatus": 429,
+    "message": "Too many requests"
+  },
+  "ERR_UNSUPPORTED_DOC": {
+    "httpStatus": 422,
+    "message": "Unsupported document type"
+  },
+  "ERR_INTERNAL": {
+    "httpStatus": 500,
+    "message": "Internal server error"
+  }
+}
+
+
